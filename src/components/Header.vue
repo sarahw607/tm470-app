@@ -1,0 +1,15 @@
+<template>
+  <header>
+    <img src alt="Site Logo">
+  </header>
+</template>
+
+<script>
+export default {
+  name: "SiteHeader"
+};
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style scoped>
+</style>
