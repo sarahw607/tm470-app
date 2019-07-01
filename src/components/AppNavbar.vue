@@ -16,15 +16,15 @@
 
 <script>
 export default {
-  name: 'Navbar'
-}
+  name: "AppNavbar"
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-nav{
+nav {
   width: 100%;
-  background-color:#9A879D;
+  background-color: #9a879d;
   height: 50px;
 }
 ul {
