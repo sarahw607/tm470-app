@@ -6,8 +6,8 @@
 
 <script>
 export default {
-  name: "AppHeader"
-};
+  name: 'AppHeader'
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

@@ -7,12 +7,12 @@
 </template>
 
 <script>
-import Navbar from "./components/AppNavbar.vue";
-import Header from "./components/AppHeader.vue";
+import AppNavbar from './components/AppNavbar.vue'
+import AppHeader from './components/AppHeader.vue'
 export default {
-  name: "App",
+  name: 'App',
   components: { AppNavbar, AppHeader }
-};
+}
 </script>
 
 <style>
