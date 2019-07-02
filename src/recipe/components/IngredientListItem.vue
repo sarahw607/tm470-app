@@ -1,12 +1,11 @@
 <template>
-  <header>
-    <img src alt="Site Logo" class="site-logo" />
-  </header>
+  <div>{{ingredient}}</div>
 </template>
 
 <script>
 export default {
-  name: 'AppHeader'
+  name: 'IngredientListItem',
+  props: ['ingredient']
 }
 </script>
 
