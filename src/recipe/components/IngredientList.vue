@@ -9,7 +9,12 @@ import IngredientListItem from './IngredientListItem.vue'
 export default {
   name: 'IngredientList',
   props: ['ingredientList'],
-  components: { IngredientListItem }
+  components: { IngredientListItem },
+  methods: {
+    removeIngredient () {
+      // TODO implement delete function
+    }
+  }
 }
 </script>
 

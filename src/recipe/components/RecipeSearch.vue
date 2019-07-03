@@ -4,32 +4,41 @@
       <label>Search</label>
       <input v-model="newIngredient" />
       <button type="button" v-on:click="addIngredient()">Add Ingredient</button>
-      <button type="button">Search Recipes</button>
+      <button type="button" v-on:click="searchRecipes()">Search Recipes</button>
       <label>Include Store Cupboard Items?</label>
       <input type="checkbox" />
     </form>
     <ingredient-list v-bind:ingredientList="ingredients"></ingredient-list>
-    {{error}}
+  <div> {{error}}</div>
+    {{recipes}}
   </div>
 </template>
 
 <script>
 import IngredientList from './IngredientList.vue'
+import axios from 'axios'
 export default {
   name: 'RecipeSearch',
   data: function () {
     return {
-      ingredients: ['cheese', 'tomato'],
+      ingredients: [],
       newIngredient: '',
-      error: ''
+      error: '',
+      recipes: []
     }
   },
   methods: {
     addIngredient: function () {
       this.error = '';
-      (this.ingredients.indexOf(this.newIngredient) === -1)
+      (this.ingredients.indexOf(this.newIngredient) === -1 && this.newIngredient.length > 1)
         ? this.ingredients.push(this.newIngredient)
-        : this.error = `You've already added that one`
+        : this.error = `There's an issue`
+      this.newIngredient = ''
+    },
+    searchRecipes: function () {
+      const apiPath = `https://api.edamam.com/search?q=${this.ingredients.join(',')}&app_id=77782426&app_key=04992e180e5fa5497e347529b8570e88`
+      console.log(apiPath)
+      axios.get(apiPath).then(response => (this.recipes = response.data.hits))
     }
   },
   components: { IngredientList }

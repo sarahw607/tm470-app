@@ -1,5 +1,5 @@
 <template>
-  <div>{{ingredient}}</div>
+  <div>{{ingredient}} X</div>
 </template>
 
 <script>
