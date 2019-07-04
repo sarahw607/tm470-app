@@ -1,7 +1,10 @@
 <template>
   <ul>
-    <a v-for="item in recipeList" v-bind:key="item.uri" v-bind:href="item.uri">{{item}}</a>
-    <!-- <recipe-list-item v-for="item in recipeList" v-bind:recipe="item" v-bind:key="item.uri"></recipe-list-item> -->
+    <recipe-list-item
+      v-for="item in recipeList"
+      v-bind:recipe="item.recipe"
+      v-bind:key="item.recipe.uri"
+    ></recipe-list-item>
   </ul>
 </template>
 

@@ -1,12 +1,9 @@
-<template>
-  <div>
-    <a :to="{name: 'RecipeDetails'}">{{recipe.label}}</a>
-  </div>
-</template>
+<template></template>
 
 <script>
+
 export default {
-  name: 'RecipeListItem',
+  name: 'RecipeDetails',
   props: ['recipe']
 }
 </script>

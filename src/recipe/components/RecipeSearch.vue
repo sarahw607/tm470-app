@@ -39,7 +39,7 @@ export default {
     searchRecipes: function () {
       const apiPath = `https://api.edamam.com/search?q=${this.ingredients.join(',')}&app_id=77782426&app_key=04992e180e5fa5497e347529b8570e88`
       console.log(apiPath)
-      axios.get(apiPath).then(response => { this.recipes = response.data.hits; console.log(this.recipes.length) })
+      axios.get(apiPath).then(response => { console.log(response.data.hits[0].recipe.uri); this.recipes = response.data.hits })
     }
   },
   components: { IngredientList, RecipeList }
