@@ -1,12 +1,16 @@
 <template>
   <div>
     <form>
-      <label>Search</label>
-      <input v-model="newIngredient" />
-      <button type="button" v-on:click="addIngredient()">Add Ingredient</button>
-      <button type="button" v-on:click="searchRecipes()">Search Recipes</button>
-      <label>Include Store Cupboard Items?</label>
-      <input type="checkbox" />
+      <div>
+        <input v-model="newIngredient" />
+      </div>
+      <div>
+        <button type="button" v-on:click="addIngredient()">Add Ingredient</button>
+        <button type="button" v-on:click="searchRecipes()">Search Recipes</button>
+      </div><div>
+        <label>Include Store Cupboard Items?</label>
+        <input type="checkbox" />
+      </div>
     </form>
     <ingredient-list v-bind:ingredientList="ingredients"></ingredient-list>
     <div>{{error}}</div>
@@ -38,8 +42,7 @@ export default {
     },
     searchRecipes: function () {
       const apiPath = `https://api.edamam.com/search?q=${this.ingredients.join(',')}&app_id=77782426&app_key=04992e180e5fa5497e347529b8570e88`
-      console.log(apiPath)
-      axios.get(apiPath).then(response => { console.log(response.data.hits[0].recipe.uri); this.recipes = response.data.hits })
+      axios.get(apiPath).then(response => { this.recipes = response.data.hits })
     }
   },
   components: { IngredientList, RecipeList }

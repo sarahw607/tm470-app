@@ -1,10 +1,11 @@
-<template></template>
+<template>
+<p>I'm the store cupboard</p>
+</template>
 
 <script>
 
 export default {
-  name: 'RecipeDetails',
-  props: ['recipe']
+  name: 'StoreCupboard'
 }
 </script>
 

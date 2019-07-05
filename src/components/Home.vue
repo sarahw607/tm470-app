@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import RecipeSearch from '../recipe/components/RecipeSearch.vue'
+import RecipeSearch from './recipe/RecipeSearch.vue'
 export default {
   name: 'Home',
   components: {RecipeSearch}

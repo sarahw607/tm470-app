@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a :to="{name: 'RecipeDetails'}">{{recipe.label}}</a>
+    <router-link :to="{ name: 'RecipeDetails', params: { recipe: recipe.uri }}">{{recipe.label}}</router-link>
   </div>
 </template>
 

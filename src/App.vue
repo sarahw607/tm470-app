@@ -28,5 +28,6 @@ body {
   text-align: center;
   background-color: #cfcfcd;
   color: #454545;
+  min-height: 100vh;
 }
 </style>

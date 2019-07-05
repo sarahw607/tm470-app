@@ -2,10 +2,10 @@
   <nav>
     <ul>
       <li>
-        <a :to="{name: 'Home'}">Search</a>
+        <router-link to="/">Search</router-link>
       </li>
       <li>
-        <a href="#">Store Cupboard</a>
+        <router-link to="/cupboard">Store Cupboard</router-link>
       </li>
       <li>
         <a href="#">Food Advice</a>
