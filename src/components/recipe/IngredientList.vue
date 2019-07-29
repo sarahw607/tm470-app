@@ -1,5 +1,5 @@
 <template>
-  <ul>
+  <ul class="content">
     <ingredient-list-item v-for="item in ingredientList" v-bind:ingredient="item" v-bind:key="item"></ingredient-list-item>
   </ul>
 </template>

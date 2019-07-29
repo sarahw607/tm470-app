@@ -1,9 +1,9 @@
 <template>
   <nav>
     <ul>
-      <li>
-        <router-link to="/">Search</router-link>
-      </li>
+      <router-link to="/" tag="li">
+        <a>Search</a>
+      </router-link>
       <li>
         <router-link to="/cupboard">Store Cupboard</router-link>
       </li>
@@ -31,9 +31,19 @@ ul {
   list-style-type: none;
   padding: 0;
   text-align: center;
+  height: 100%;
 }
 li {
   display: inline-block;
-  margin: 0 10px;
+  height: 100%;
+}
+
+a{
+  height: 100%;
+  display: inline-block;
+  padding: 10px 20px;
+}
+.active{
+  background-color: #ae8ca3
 }
 </style>

@@ -1,0 +1,19 @@
+a {
+  text-decoration: none;
+}
+
+body{
+    background: white
+}
+
+.container{
+    width: 75%;
+    margin-left: auto;
+    Margin-right: auto;
+    max-width: 1180px;
+}
+
+.content { 
+    background-color: white;
+    padding: 15px;
+}

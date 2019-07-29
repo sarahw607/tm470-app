@@ -1,5 +1,5 @@
 <template>
-  <ul>
+  <ul class="content">
     <recipe-list-item
       v-for="item in recipeList"
       v-bind:recipe="item.recipe"
