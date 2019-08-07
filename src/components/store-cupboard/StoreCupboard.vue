@@ -1,11 +1,18 @@
 <template>
-<p>I'm the store cupboard</p>
+<form >
+  <input type="text" v-model="newIngredient"></input>
+</form>
 </template>
 
 <script>
 
 export default {
-  name: 'StoreCupboard'
+  name: 'StoreCupboard',
+  data: function () {
+    return {
+      newIngredient: '',
+    }
+  },
 }
 </script>
 
