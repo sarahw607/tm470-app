@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div>
     <form>
       <div>
         <input v-model="newIngredient" />

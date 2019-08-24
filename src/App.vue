@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <app-navbar></app-navbar>
-    <div class="container">
+    <main class="container">
     <router-view/>
-    </div>
+    </main>
   </div>
 </template>
 
@@ -16,10 +16,6 @@ export default {
 </script>
 
 <style>
-body {
-  padding: 0;
-  margin: 0;
-}
 
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
@@ -27,7 +23,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   background-image: url('./assets/background-image.jpg');
-  color: #454545;
   min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  align-content: flex-start;
+}
+
+header, nav, footer {
+    flex: 1 100%;
 }
 </style>
