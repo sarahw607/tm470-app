@@ -1,6 +1,13 @@
 <template>
   <nav>
     <ul class="menu">
+      <li class="toggle" v-on:click="toggleMenuIcon()">
+        <a href="#">
+          <img v-bind:class="{ hidden: !showMenu }" class="icon" src="@/assets/img/close-button.svg"/>
+          <img v-bind:class="{ hidden: showMenu }" class="icon" src="@/assets/img/menu-button.svg"/>
+        </a>
+      </li>
+      <div v-bind:class="{ hidden: !showMenu }" class="menu-content">
       <router-link to="/" tag="li" class="item">
         <a>Search</a>
       </router-link>
@@ -10,17 +17,15 @@
       <router-link to="/safety" tag="li" class="item">
         <a>Food Safety</a>
       </router-link>
-      <router-link to="/login" tag="li" class="item last">
-        <a>Log In</a>
-      </router-link>
-      <router-link to="/signup" tag="li" class="item last">
-        <a>Sign Up</a>
-      </router-link>
-      <li class="toggle" v-on:click="toggleMenuIcon()">
-        <a href="#">
-          <i class="fas fa-bars"></i>
-        </a>
-      </li>
+      <span class="last">
+        <router-link to="/login" tag="li" class="item">
+          <a>Log In</a>
+        </router-link>
+        <router-link to="/signup" tag="li" class="item">
+         <a>Sign Up</a>
+        </router-link>
+      </span>
+      </div>
     </ul>
   </nav>
 </template>
@@ -28,8 +33,14 @@
 <script>
 export default {
   name: 'AppNavbar',
+  data: function () {
+    return {
+      showMenu: false
+    }
+  },
   methods: {
     toggleMenuIcon: function () {
+      this.showMenu = !this.showMenu
     }
   }
 }
@@ -52,16 +63,26 @@ li {
 .menu {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 }
 
 .menu li {
-  font-size: 16px;
   padding: 15px 5px;
   white-space: nowrap;
 }
 
 .active {
   background-color: #ae8ca3;
+}
+
+.icon {
+  height: 20px;
+  width: 20px;
+}
+
+.toggle{
+  margin-left: auto;
+  display: none;
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
@@ -72,8 +93,15 @@ li {
     justify-content: space-between;
   }
 
+  .toggle{
+    display: block;
+  }
+
   .item {
     width: 100%
+  }
+  .hidden{
+    display: none;
   }
 }
 </style>
