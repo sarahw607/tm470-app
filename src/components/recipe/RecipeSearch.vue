@@ -37,6 +37,7 @@ export default {
       this.error = '';
       (this.ingredients.indexOf(this.newIngredient) === -1 && this.newIngredient.length > 1)
         ? this.ingredients.push(this.newIngredient)
+        // eslint-disable-next-line
         : this.error = `There's an issue`
       this.newIngredient = ''
     },

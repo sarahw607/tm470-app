@@ -10,20 +10,28 @@
       <router-link to="/safety" tag="li" class="item">
         <a>Food Safety</a>
       </router-link>
-            <router-link to="/login" tag="li" class="item">
+      <router-link to="/login" tag="li" class="item last">
         <a>Log In</a>
       </router-link>
-            <router-link to="/signup" tag="li" class="item">
+      <router-link to="/signup" tag="li" class="item last">
         <a>Sign Up</a>
       </router-link>
-     <li class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li>
-     </ul>
+      <li class="toggle" v-on:click="toggleMenuIcon()">
+        <a href="#">
+          <i class="fas fa-bars"></i>
+        </a>
+      </li>
+    </ul>
   </nav>
 </template>
 
 <script>
 export default {
-  name: 'AppNavbar'
+  name: 'AppNavbar',
+  methods: {
+    toggleMenuIcon: function () {
+    }
+  }
 }
 </script>
 
@@ -41,26 +49,31 @@ li {
   display: inline-block;
   height: 100%;
 }
-.menu{
+.menu {
   display: flex;
   flex-direction: row;
 }
 
 .menu li {
-    font-size: 16px;
-    padding: 15px 5px;
-    white-space: nowrap;
+  font-size: 16px;
+  padding: 15px 5px;
+  white-space: nowrap;
 }
 
-.active{
-  background-color: #ae8ca3
+.active {
+  background-color: #ae8ca3;
 }
 
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-  .menu{
-  flex-direction: column;
-  align-items: center;
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .menu {
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
   }
 
+  .item {
+    width: 100%
+  }
 }
 </style>
