@@ -1,18 +1,20 @@
 <template>
-<form >
-  <input type="text" v-model="newIngredient"></input>
-</form>
+  <div class="content">
+    <h1>Store Cupboard</h1>
+    <form>
+      <input type="text" v-model="newIngredient" />
+    </form>
+  </div>
 </template>
 
 <script>
-
 export default {
   name: 'StoreCupboard',
   data: function () {
     return {
-      newIngredient: '',
+      newIngredient: ''
     }
-  },
+  }
 }
 </script>
 

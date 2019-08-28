@@ -1,15 +1,13 @@
 <template>
   <div class="content">
-    <h1>Recipe Search</h1>
-    <recipe-search></recipe-search>
+    <h1>Login </h1>
   </div>
 </template>
 
 <script>
-import RecipeSearch from './recipe/RecipeSearch.vue'
+
 export default {
-  name: 'Home',
-  components: {RecipeSearch}
+  name: 'LoginPage'
 }
 </script>
 

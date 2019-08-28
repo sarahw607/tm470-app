@@ -1,15 +1,15 @@
 <template>
-  <div class="content">
+  <div>
     <form>
       <div>
-        <input v-model="newIngredient" />
+        <input v-model="newIngredient" type="text" />
       </div>
       <div>
         <button type="button" v-on:click="addIngredient()">Add Ingredient</button>
         <button type="button" v-on:click="searchRecipes()">Search Recipes</button>
       </div><div>
-        <label>Include Store Cupboard Items?</label>
         <input type="checkbox" />
+        <label>Include Store Cupboard Items?</label>
       </div>
     </form>
     <ingredient-list v-bind:ingredientList="ingredients"></ingredient-list>
@@ -37,6 +37,7 @@ export default {
       this.error = '';
       (this.ingredients.indexOf(this.newIngredient) === -1 && this.newIngredient.length > 1)
         ? this.ingredients.push(this.newIngredient)
+        // eslint-disable-next-line
         : this.error = `There's an issue`
       this.newIngredient = ''
     },

@@ -1,6 +1,6 @@
 <template>
 <div class="content">
- <h4> {{recipe.label}}</h4>
+ <h1> {{recipe.label}}</h1>
  <p v-for="item in recipe.ingredientLines" v-bind:key="item">{{item}}</p>
  <a :href="recipe.url" target="_blank">Method</a>
 </div>
