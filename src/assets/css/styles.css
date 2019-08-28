@@ -32,6 +32,10 @@ a {
   text-decoration: none;
 }
 
+p {
+  margin-bottom: 15px;
+}
+
 button {
   background-color: #ae8ca3;
   border: 0;
