@@ -3,28 +3,32 @@
     <ul class="menu">
       <li class="toggle" v-on:click="toggleMenuIcon()">
         <a href="#">
-          <img v-bind:class="{ hidden: !showMenu }" class="icon" src="@/assets/img/close-button.svg"/>
-          <img v-bind:class="{ hidden: showMenu }" class="icon" src="@/assets/img/menu-button.svg"/>
+          <img
+            v-bind:class="{ hidden: !showMenu }"
+            class="icon"
+            src="@/assets/img/close-button.svg"
+          />
+          <img v-bind:class="{ hidden: showMenu }" class="icon" src="@/assets/img/menu-button.svg" />
         </a>
       </li>
       <div v-bind:class="{ hidden: !showMenu }" class="menu-content">
-      <router-link to="/" tag="li" class="item">
-        <a>Search</a>
-      </router-link>
-      <router-link to="/cupboard" tag="li" class="item">
-        <a>Store Cupboard</a>
-      </router-link>
-      <router-link to="/safety" tag="li" class="item">
-        <a>Food Safety</a>
-      </router-link>
-      <span class="last">
-        <router-link to="/login" tag="li" class="item">
-          <a>Log In</a>
+        <router-link to="/" tag="li" class="item">
+          <a>Search</a>
         </router-link>
-        <router-link to="/signup" tag="li" class="item">
-         <a>Sign Up</a>
+        <router-link to="/cupboard" tag="li" class="item">
+          <a>Store Cupboard</a>
         </router-link>
-      </span>
+        <router-link to="/safety" tag="li" class="item">
+          <a>Food Safety</a>
+        </router-link>
+        <span class="last">
+          <router-link to="/login" tag="li" class="item">
+            <a>Log In</a>
+          </router-link>
+          <router-link to="/signup" tag="li" class="item">
+            <a>Sign Up</a>
+          </router-link>
+        </span>
       </div>
     </ul>
   </nav>
@@ -80,7 +84,7 @@ li {
   width: 20px;
 }
 
-.toggle{
+.toggle {
   margin-left: auto;
   display: none;
 }
@@ -93,14 +97,14 @@ li {
     justify-content: space-between;
   }
 
-  .toggle{
+  .toggle {
     display: block;
   }
 
   .item {
-    width: 100%
+    width: 100%;
   }
-  .hidden{
+  .hidden {
     display: none;
   }
 }
