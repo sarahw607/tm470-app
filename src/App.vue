@@ -35,11 +35,13 @@ header, nav, footer {
 }
 
 footer{
-  height: 75px;
+  height: 50px;
   background-color: #9a879d;
   position: fixed;
   bottom:0;
   width: 100%;
+  margin-top: 50px;
+  padding: 10px;
 }
 
 header, main, footer {

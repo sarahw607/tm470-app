@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import IngredientList from './IngredientList.vue'
+import IngredientList from '../shared/IngredientList.vue'
 import RecipeList from './RecipeList.vue'
 import axios from 'axios'
 export default {

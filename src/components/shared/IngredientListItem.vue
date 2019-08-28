@@ -1,5 +1,5 @@
 <template>
-  <div>{{ingredient}} X</div>
+  <div class="list-item">{{ingredient}} X</div>
 </template>
 
 <script>
