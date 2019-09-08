@@ -5,11 +5,9 @@
 </template>
 
 <script>
-import IngredientListItem from './IngredientListItem.vue'
 export default {
   name: 'IngredientList',
   props: ['ingredientList'],
-  components: { IngredientListItem },
   methods: {
     removeIngredient () {
       // TODO implement delete function

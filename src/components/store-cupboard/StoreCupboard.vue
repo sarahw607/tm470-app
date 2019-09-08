@@ -34,9 +34,8 @@ export default {
     }
   },
   mounted () {
-    const apiPath = `${process.env.ROOT_API}/users/${this.userId}/ingredients`
+    const apiPath = `${process.env.ROOT_API}/users/ingredients`
     axios.get(apiPath).then(response => {
-      console.log(response.data.ingredients)
       this.ingredients = response.data.ingredients
       this.ingredients = this.ingredients.map(ing => ing.name)
     })

@@ -8,7 +8,7 @@
         <button type="button" v-on:click="addIngredient()">Add Ingredient</button>
         <button type="button" v-on:click="searchRecipes()">Search Recipes</button>
       </div><div>
-        <input type="checkbox" />
+        <input type="checkbox" v-model="includeStore"/>
         <label>Include Store Cupboard Items?</label>
       </div>
     </form>
@@ -29,7 +29,9 @@ export default {
       ingredients: [],
       newIngredient: '',
       error: '',
-      recipes: []
+      recipes: [],
+      includeStore: false,
+      userId: '5d72a0a9a7e582d09d31c6c1'
     }
   },
   methods: {
@@ -42,8 +44,20 @@ export default {
       this.newIngredient = ''
     },
     searchRecipes: function () {
-      const apiPath = `${process.env.RECIPE_API}/search?q=${this.ingredients.join(',')}&app_id=77782426&app_key=04992e180e5fa5497e347529b8570e88`
-      axios.get(apiPath).then(response => { this.recipes = response.data.hits })
+      console.log()
+      let apiPath = ''
+      if (this.includeStore) {
+        const ingredientApi = `${process.env.ROOT_API}/users/ingredients`
+        axios.get(ingredientApi).then(response => {
+          const ingredientsString = [...response.data.ingredients.map(ing => ing.name), ...this.ingredients]
+          console.log(IngredientList)
+          apiPath = `${process.env.RECIPE_API}/search?q=${ingredientsString}&app_id=77782426&app_key=04992e180e5fa5497e347529b8570e88`
+          axios.get(apiPath).then(response => { this.recipes = response.data.hits })
+        })
+      } else {
+        apiPath = `${process.env.RECIPE_API}/search?q=${this.ingredients.join(',')}&app_id=77782426&app_key=04992e180e5fa5497e347529b8570e88`
+        axios.get(apiPath).then(response => { this.recipes = response.data.hits })
+      }
     }
   },
   components: { IngredientList, RecipeList }
