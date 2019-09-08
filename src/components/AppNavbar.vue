@@ -15,21 +15,26 @@
         <router-link to="/" tag="li" class="item">
           <a>Search</a>
         </router-link>
-        <router-link to="/cupboard" tag="li" class="item">
+        <router-link to="/cupboard" tag="li" class="item" v-if="isLoggedIn()">
           <a>Store Cupboard</a>
         </router-link>
         <router-link to="/safety" tag="li" class="item">
           <a>Food Safety</a>
         </router-link>
-        <span class="last">
+      </div>
+              <div class="last" v-if="!isLoggedIn()" v-bind:class="{ hidden: !showMenu }">
           <router-link to="/login" tag="li" class="item">
             <a>Log In</a>
           </router-link>
           <router-link to="/signup" tag="li" class="item">
             <a>Sign Up</a>
           </router-link>
-        </span>
-      </div>
+        </div>
+        <div>
+          <li class="item" v-if="isLoggedIn()" v-on:click="logOut()" v-bind:class="{ hidden: !showMenu }">
+            <a v-on:click="logOut()">Sign Out</a>
+          </li>
+          </div>
     </ul>
   </nav>
 </template>
@@ -45,6 +50,13 @@ export default {
   methods: {
     toggleMenuIcon: function () {
       this.showMenu = !this.showMenu
+    },
+    isLoggedIn: function () {
+      return localStorage.getItem('user') !== undefined && localStorage.getItem('user') !== null
+    },
+    logOut: function () {
+      console.log('log out')
+      localStorage.removeItem('user')
     }
   }
 }
@@ -66,8 +78,11 @@ li {
 }
 .menu {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+}
+
+.menu-content {
+  flex: 1;
+  text-align: center;
 }
 
 .menu li {
@@ -89,12 +104,20 @@ li {
   display: none;
 }
 
+.last{
+  margin-left: auto;
+}
+
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   .menu {
     flex-direction: column;
     align-items: center;
     flex-wrap: wrap;
     justify-content: space-between;
+  }
+
+  .menu-content {
+    width: 100%
   }
 
   .toggle {
@@ -107,5 +130,6 @@ li {
   .hidden {
     display: none;
   }
+
 }
 </style>

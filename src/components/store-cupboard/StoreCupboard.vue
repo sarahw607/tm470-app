@@ -29,28 +29,29 @@ export default {
     return {
       ingredients: [],
       newIngredient: '',
-      error: '',
-      userId: '5d72a0a9a7e582d09d31c6c1'
+      error: ''
     }
   },
   mounted () {
     const apiPath = `${process.env.ROOT_API}/users/ingredients`
-    axios.get(apiPath).then(response => {
-      this.ingredients = response.data.ingredients
-      this.ingredients = this.ingredients.map(ing => ing.name)
-    })
+    axios.get(apiPath, { method: 'GET', mode: 'CORS', headers: { 'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('user')) } })
+      .then(response => {
+        this.ingredients = response.data.ingredients
+        this.ingredients = this.ingredients.map(ing => ing.name)
+      })
   },
   methods: {
     // TODO pass ingredient to api to add to database
     addIngredient: function () {
       this.error = ''
       if (this.ingredients.indexOf(this.newIngredient) === -1 && this.newIngredient.length > 1) {
-        const apiPath = `${process.env.ROOT_API}/users/${this.userId}/ingredients`
-        axios.post(apiPath, {name: this.newIngredient}).then(response => {
-          console.log(response.data.ingredients)
-          this.ingredients = response.data.ingredients
-          this.ingredients = this.ingredients.map(ing => ing.name)
-        })
+        const apiPath = `${process.env.ROOT_API}/users/ingredients`
+        // eslint-disable-next-line
+        axios.post(apiPath,  {name: this.newIngredient}, {method: 'POST', mode: 'CORS', headers: { 'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('user')) }  } )
+          .then(response => {
+            this.ingredients = response.data.ingredients
+            this.ingredients = this.ingredients.map(ing => ing.name)
+          })
       } else {
         this.error = `You cannot add the same ingredient twice`
       }

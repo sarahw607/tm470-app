@@ -30,8 +30,7 @@ export default {
       newIngredient: '',
       error: '',
       recipes: [],
-      includeStore: false,
-      userId: '5d72a0a9a7e582d09d31c6c1'
+      includeStore: false
     }
   },
   methods: {
@@ -44,16 +43,25 @@ export default {
       this.newIngredient = ''
     },
     searchRecipes: function () {
-      console.log()
+      if (this.ingredients.length < 1) {
+        this.error = 'Please add some ingredients to search'
+        return
+      }
       let apiPath = ''
       if (this.includeStore) {
         const ingredientApi = `${process.env.ROOT_API}/users/ingredients`
-        axios.get(ingredientApi).then(response => {
-          const ingredientsString = [...response.data.ingredients.map(ing => ing.name), ...this.ingredients]
-          console.log(IngredientList)
-          apiPath = `${process.env.RECIPE_API}/search?q=${ingredientsString}&app_id=77782426&app_key=04992e180e5fa5497e347529b8570e88`
-          axios.get(apiPath).then(response => { this.recipes = response.data.hits })
-        })
+        axios.get(ingredientApi, { method: 'GET', mode: 'CORS', headers: { 'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('user')) } })
+          .then(response => {
+            const ingredientsString = [...response.data.ingredients.map(ing => ing.name), ...this.ingredients]
+            apiPath = `${process.env.RECIPE_API}/search?q=${ingredientsString}&app_id=77782426&app_key=04992e180e5fa5497e347529b8570e88`
+            axios.get(apiPath).then(results => {
+              if (results.data.hits.length < 1) {
+                this.error = 'No matching recipes were found'
+              } else {
+                this.recipes = results.data.hits
+              }
+            })
+          })
       } else {
         apiPath = `${process.env.RECIPE_API}/search?q=${this.ingredients.join(',')}&app_id=77782426&app_key=04992e180e5fa5497e347529b8570e88`
         axios.get(apiPath).then(response => { this.recipes = response.data.hits })

@@ -31,7 +31,10 @@ export default {
     login: function () {
       const apiUrl = `${process.env.ROOT_API}/login`
       axios.post(apiUrl, {email: this.username, password: this.password}).then(response => {
-        console.log(response)
+        if (response.data.token) {
+        // store user details and jwt token in local storage to keep user logged in between page refreshes
+          localStorage.setItem('user', JSON.stringify(response.data.token))
+        }
       })
     }
   }

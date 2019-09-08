@@ -42,7 +42,10 @@ export default {
     register: function () {
       const apiUrl = `${process.env.ROOT_API}/register`
       axios.post(apiUrl, {firstName: this.firstName, lastName: this.lastName, email: this.email, password: this.password}).then(response => {
-        console.log(response)
+        if (response.data.token) {
+        // store user details and jwt token in local storage to keep user logged in between page refreshes
+          localStorage.setItem('user', JSON.stringify(response.data.token))
+        }
       })
     }
   }
