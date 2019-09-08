@@ -37,6 +37,7 @@ export default {
   justify-content: center;
   flex-flow: row wrap;
   align-content: flex-start;
+  padding-bottom: 20px;
 }
 
 header,
@@ -46,12 +47,11 @@ footer {
 }
 
 footer {
-  height: 75px;
+  height: 50px;
   background-color: #9a879d;
   position: fixed;
   bottom: 0;
   width: 100%;
-  margin-top: 50px;
   padding: 10px;
 }
 

@@ -16,7 +16,7 @@ export default {
     }
   },
   mounted () {
-    const apiPath = `https://api.edamam.com/search?r=${encodeURIComponent(this.$route.params.recipe)}&app_id=77782426&app_key=04992e180e5fa5497e347529b8570e88`
+    const apiPath = `${process.env.RECIPE_API}/search?r=${encodeURIComponent(this.$route.params.recipe)}&app_id=77782426&app_key=04992e180e5fa5497e347529b8570e88`
     axios.get(apiPath).then(response => { this.recipe = response.data[0] })
   }
 }

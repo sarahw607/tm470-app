@@ -11,7 +11,7 @@
     <p>Hard cheeses such as cheddar can be eaten, even once mould has begun to grow. As long as mould is removed from the cheese, it should still be safe to eat.</p>
     <h3>Sugary Foods</h3>
     <p>
-      Any foods with a high sugar content, such as jam, honey and preserves are considered low risk, and should be safe to consume even beyond the sell by date,
+      Any foods with a high sugar content, such as jam, honey and preserves are considered low risk, and should be safe to consume even beyond the use by date,
       as long as there is no sign of mould
     </p>
     <h2>Dont's</h2>
@@ -38,5 +38,9 @@ export default {
 .content {
   align-items: flex-start;
   text-align: left;
+}
+
+h2{
+  text-decoration: underline;
 }
 </style>

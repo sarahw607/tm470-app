@@ -1,6 +1,6 @@
 <template>
   <div class="list-container">
-    <ingredient-list-item v-for="item in ingredientList" v-bind:ingredient="item" v-bind:key="item"></ingredient-list-item>
+    <div v-for="item in ingredientList" v-bind:key="item" class="list-item">{{item}} X</div>
   </div>
 </template>
 

@@ -1,5 +1,5 @@
 * {
-  font-family: 'Bookman Old Style, Serif';
+  font-family: 'Courier New", Courier, monospace';
   padding: 0;
   margin: 0;
   color: #454545;
@@ -26,13 +26,14 @@ body {
   text-align: center;
   padding: 15px;
   margin-top: 20px;
+  margin-bottom: 50px;;
 }
 
 a {
   text-decoration: none;
 }
 
-p {
+p, h1 ,h2, h3 {
   margin-bottom: 15px;
 }
 

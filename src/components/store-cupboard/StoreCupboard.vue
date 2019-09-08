@@ -1,52 +1,65 @@
 <template>
   <div class="content">
     <h1>Store Cupboard</h1>
-  <div>
-    <form>
-      <div>
-        <label>Here you can add or delete ingredients to your Store Cupboard, which you
-          will be able to include in your recipe searches on the Search page.</label>
-        <input v-model="newIngredient" type="text" />
-      </div>
-      <div>
-        <button type="button" v-on:click="addIngredient()">Add Ingredient</button>
-      </div>
-    </form>
-    <ingredient-list v-bind:ingredientList="ingredients"></ingredient-list>
-    {{error}}
-  </div>
+    <div>
+      <form>
+        <div>
+          <label>
+            Here you can add or delete ingredients to your Store Cupboard, which you
+            will be able to include in your recipe searches on the Search page.
+          </label>
+          <input v-model="newIngredient" type="text" />
+        </div>
+        <div>
+          <button type="button" v-on:click="addIngredient()">Add Ingredient</button>
+        </div>
+      </form>
+      <ingredient-list v-bind:ingredientList="ingredients"></ingredient-list>
+      {{error}}
+    </div>
   </div>
 </template>
 
 <script>
 import IngredientList from '../shared/IngredientList.vue'
-// import axios from 'axios'
+import axios from 'axios'
 export default {
   name: 'StoreCupboard',
   data: function () {
     return {
       ingredients: [],
       newIngredient: '',
-      error: ''
+      error: '',
+      userId: '5d72a0a9a7e582d09d31c6c1'
     }
+  },
+  mounted () {
+    const apiPath = `${process.env.ROOT_API}/users/${this.userId}/ingredients`
+    axios.get(apiPath).then(response => {
+      console.log(response.data.ingredients)
+      this.ingredients = response.data.ingredients
+      this.ingredients = this.ingredients.map(ing => ing.name)
+    })
   },
   methods: {
     // TODO pass ingredient to api to add to database
     addIngredient: function () {
-      this.error = '';
-      (this.ingredients.indexOf(this.newIngredient) === -1 && this.newIngredient.length > 1)
-        ? this.ingredients.push(this.newIngredient)
-        // eslint-disable-next-line
-        : this.error = `You cannot add the same ingredient twice`
+      this.error = ''
+      if (this.ingredients.indexOf(this.newIngredient) === -1 && this.newIngredient.length > 1) {
+        const apiPath = `${process.env.ROOT_API}/users/${this.userId}/ingredients`
+        axios.post(apiPath, {name: this.newIngredient}).then(response => {
+          console.log(response.data.ingredients)
+          this.ingredients = response.data.ingredients
+          this.ingredients = this.ingredients.map(ing => ing.name)
+        })
+      } else {
+        this.error = `You cannot add the same ingredient twice`
+      }
+      // eslint-disable-next-line
       this.newIngredient = ''
     },
-    // TODO plug in written api to get user ingredients
-    searchRecipes: function () {
-    },
     // TODO plug in written api to delete ingredient
-    removeIngredient: function () {
-
-    }
+    removeIngredient: function () {}
   },
   components: { IngredientList }
 }
